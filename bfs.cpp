@@ -98,10 +98,9 @@ public:
 	}
 private:
 	std::unordered_map<uid, std::unordered_set<uid>> _data;
-	// this will also do, but we need to have a mechanism to not insert the same neighbor again,
-	// even if we do, it will not be theoretically wrong, but this will lead to some inefficiencies while search
-	// though it will be more optimal to just traverse the graph with a vector
-	//	std::unordered_map<uid, std::std::vector<uid>> _data;
+	// neighbors can be better represented with a vector, but we need to have a mechanism to not insert the same neighbor again,
+	// if we can guarantee uniqueness of neighbors, using vector will be more efficient
+	// std::unordered_map<uid, std::vector<uid>> _data;
 
 };
 
