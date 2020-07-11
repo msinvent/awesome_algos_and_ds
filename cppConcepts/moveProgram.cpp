@@ -3,7 +3,7 @@
 // Author      : Manish Sharma
 // Version     :
 // Copyright   : Your copyright notice
-// Description : Hello World in C++, Ansi-style
+// Description : Program to demonstrate move operation
 //============================================================================
 
 #include <iostream>
@@ -31,7 +31,19 @@ public:
 	{
 	}
 	Widget& operator=(const Widget& w) = delete;	//copy assignment operator
-	Widget&& operator=(Widget&& w) = delete;		//move assignment operator
+	Widget&& operator=(Widget&& w) 					//move assignment operator
+	{
+		// delete old resources
+		delete pi;
+
+		i = std::move(w.i);
+		s = std::move(w.s);
+		pi = w.pi;
+		myvec = std::move(w.myvec);
+
+		// reset move from pointers to a null state
+		w.pi = nullptr;
+	}
 	const std::string& stringIs()
 	{
 		return s;
