@@ -56,6 +56,30 @@ void constructTree(node** root, std::vector<node>& dataOwningArray){
 
 }
 
+void preOrder(node* root){
+    if(root != nullptr) {
+        std::cout<<root->val<<", ";
+        preOrder(root->left);
+        preOrder(root->right);
+    }
+}
+
+void postOrder(node* root){
+    if(root != nullptr) {
+        postOrder(root->left);
+        postOrder(root->right);
+        std::cout<<root->val<<", ";
+    }
+}
+
+void inOrder(node* root){
+    if(root != nullptr) {
+        inOrder(root->left);
+        std::cout<<root->val<<", ";
+        inOrder(root->right);
+    }
+}
+
 int main() {
 	std::vector<node> dataOwningArray;
 	dataOwningArray.reserve(100);
@@ -137,5 +161,12 @@ int main() {
 
 	}std::cout<<"\n";
 
+    std::cout<<"Recursive Implementation Outputs : \n";
+    std::cout<<"Recursive PreOrder : ";
+    preOrder(root);
+    std::cout<<"\nRecursive PostOrder : ";
+    postOrder(root);
+    std::cout<<"\nRecursive InOrder : ";
+    inOrder(root);
 	return 0;
 }
